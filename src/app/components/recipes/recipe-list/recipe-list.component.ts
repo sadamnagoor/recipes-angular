@@ -4,6 +4,7 @@ import {RecipeService} from "../recipe.service";
 import {MatDialog} from "@angular/material/dialog";
 import {RecipeDetailComponent} from "../recipe-detail/recipe-detail.component";
 import {Observable} from "rxjs";
+import {RecipeDialogComponent} from "../recipe-dialog/recipe-dialog.component";
 
 @Component({
   selector: 'app-recipe-list',
@@ -17,8 +18,18 @@ export class RecipeListComponent implements OnInit {
   constructor(private recipeService: RecipeService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.recipes = this.recipeService.getRecipes();
+    this.recipeService.getRecipes().subscribe(returnedData => {
+      this.recipes = returnedData;
+      console.log(this.recipes);
+    });
   }
 
+  openDialog(recipe: Recipe): void{
+    this.dialog.open(RecipeDialogComponent, {
+      width: '500px',
+      height: '380px',
+      data: {recipe}
+    });
+  }
 
 }

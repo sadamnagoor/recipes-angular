@@ -2,18 +2,20 @@ import {Recipe} from "./recipe.model";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
-  // private url = "http://starlord.hackerearth.com/recipe";
+   private url = "http://starlord.hackerearth.com/recipe";
 
   constructor(private http: HttpClient) {
   }
 
-  private recipes: Recipe[] = [   {
+   recipes: Recipe[];
+  /* = [   {
     id:0,
     name:"Uthappizza",
     imagepath: "https://i.imgur.com/tDnjTXf.jpg",
@@ -113,14 +115,26 @@ export class RecipeService {
       description:"Cooked Toenails of various animals"
 
     }
-  ];
+  ];*/
 
-  getRecipes(): Recipe[]{
-    // return this.http.get<Recipe>(`${this.url}`);
-    return this.recipes.slice();
+  getRecipes(): any{
+    return this.http.get<any>(`${this.url}`);
   }
   getRecipe(id: number): Recipe{
     // return this.http.get<Recipe>(`${this.url}/${id}`);
-    return this.recipes[id];
+    if (this.recipes !== null) {
+      for (const rec of this.recipes){
+        if (id === rec.id) {
+          return  rec;
+        }
+      }
+    } else {
+      this.getRecipes();
+      for (const rec of this.recipes){
+        if (id === rec.id) {
+          return  rec;
+        }
+      }
+    }
   }
 }

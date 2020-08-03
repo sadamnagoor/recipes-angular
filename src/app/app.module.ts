@@ -12,7 +12,7 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { RecipeItemComponent } from './components/recipes/recipe-list/recipe-item/recipe-item.component';
 import {RecipeDetailComponent} from "./components/recipes/recipe-detail/recipe-detail.component";
 import {RecipeListComponent} from "./components/recipes/recipe-list/recipe-list.component";
-import {MatDialogModule} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { RecipeDialogComponent } from './components/recipes/recipe-dialog/recipe-dialog.component';
 import {RecipeService} from "./components/recipes/recipe.service";
 import {HttpClientModule} from "@angular/common/http";
@@ -37,9 +37,11 @@ import {HttpClientModule} from "@angular/common/http";
     MatIconModule,
     MatToolbarModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [RecipeService],
+  providers: [RecipeService,
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

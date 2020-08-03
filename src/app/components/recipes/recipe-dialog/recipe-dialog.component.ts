@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Recipe} from "../recipe.model";
 
 @Component({
   selector: 'app-recipe-dialog',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<RecipeDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: Recipe) {
+    console.log(this.data);
+  }
 
   ngOnInit(): void {
   }

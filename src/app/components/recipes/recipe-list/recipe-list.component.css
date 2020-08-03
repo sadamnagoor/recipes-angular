@@ -1,0 +1,22 @@
+.list-group-item:last-child {
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  width: 700px;
+  height: 200px;
+  padding: .75rem 1.25rem;
+  background-color: #fff;
+  border: 2px solid rgba(0,0,0,.125);
+}
+
+.profile_image{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
