@@ -15,6 +15,10 @@ export class RecipeDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.showDetails();
   }
 
+  showDetails(): void{
+    console.log(this.data.description);
+ }
 }

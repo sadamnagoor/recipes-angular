@@ -9,24 +9,17 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { HeaderComponent } from './components/header/header.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
-import { RecipeItemComponent } from './components/recipes/recipe-list/recipe-item/recipe-item.component';
-import {RecipeDetailComponent} from "./components/recipes/recipe-detail/recipe-detail.component";
-import {RecipeListComponent} from "./components/recipes/recipe-list/recipe-list.component";
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { RecipeDialogComponent } from './components/recipes/recipe-dialog/recipe-dialog.component';
 import {RecipeService} from "./components/recipes/recipe.service";
 import {HttpClientModule} from "@angular/common/http";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
     RecipeDialogComponent,
   ],
   imports: [
@@ -38,6 +31,7 @@ import {HttpClientModule} from "@angular/common/http";
     MatToolbarModule,
     MatDialogModule,
     HttpClientModule,
+    MatGridListModule,
   ],
   providers: [RecipeService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
